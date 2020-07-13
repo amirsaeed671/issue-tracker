@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Issue Tracker</title>
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+    <body class="bg-gray-800">
+        <div class="container mx-auto">
+        <div class="w-full max-w-lg mt-20 mx-auto">
+            <form id="add-issue-form" class="bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="issue_title">
+                  Title
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="issue_title" name="issue_title" required type="text" placeholder="Issue title">
+              </div>
+              <div class="mb-4">
+                  <label class="block text-gray-700 text-sm font-bold mb-2" for="issue_text">
+                    Description  
+                  </label>
+                  <textarea class="shadow appearance-none resize-none h-48 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="issue_text" placeholder="Issue description"></textarea>
+              </div>
+              <div class="flex flex-wrap mb-4 -mx-3">
+                <div class="w-full md:w-1/2 px-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="created_by">
+                    Created By
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="created_by" type="text" required placeholder="Created By">
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="assigned_to">
+                        Assigned to
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="assigned_to" type="text" required placeholder="Assigned to (opt)">
+                </div>
+              </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="status_text">
+                    Status Text
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="status_text" name="status_text" type="text" required placeholder="Status Text (opt)">
+            </div>
+              <div class="flex items-center justify-between">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                  Submit Issue
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <script>
+            document.getElementById('add-issue-form').addEventListener('submit', (e, v, sadf) => {
+                e.preventDefault()
+                debugger;
+            })
+        </script>
+    </body>
+</html>
