@@ -14,8 +14,8 @@ module.exports = {
   collectCoverageFrom: ['**/src/**/*.js'],
   coveragePathIgnorePatterns: ['.*/__tests__/.*'],
   projects: [
-    require.resolve('./jest.config.exercises'),
-    require.resolve('./jest.config.final'),
+    require.resolve('./jest.config.lint'),
+    require.resolve('./jest.config.server'),
   ],
   watchPlugins: [
     require.resolve('jest-watch-select-projects'),
