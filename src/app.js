@@ -8,13 +8,9 @@ app.use(cors())
 app.use(helmet())
 
 connectDB((err, PORT = 3000) => {
-    if(!err) {
-        app.listen(PORT, () => {
-            console.log('🚀 App is listening on PORT', PORT)
-        })
-    }
+  if (!err) {
+    app.listen(PORT, () => {
+      console.log('🚀 App is listening on PORT', PORT)
+    })
+  }
 })
-
-
-
-

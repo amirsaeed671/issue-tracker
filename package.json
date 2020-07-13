@@ -11,9 +11,11 @@
   "scripts": {
     "start": "node -r dotenv/config ./src/app.js",
     "dev": "nodemon -r dotenv/config ./src/app.js",
-    "format": "prettier --write",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage",
+    "lint": "jest --config ./test/jest.config.lint.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -28,12 +30,27 @@
     "passport-github": "^1.1.0"
   },
   "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-kentcdodds": "^14.14.1",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
+    "jest-runner-eslint": "^0.10.0",
     "jest-watch-select-projects": "^2.0.0",
     "jest-watch-typeahead": "^0.6.0",
     "lint-staged": "^10.2.11",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "yarn run test:coverage",
+      "yarn run format",
+      "jest --findRelatedTests"
+    ]
   }
 }
