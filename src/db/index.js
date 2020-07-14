@@ -8,6 +8,7 @@ function connectDB(callback) {
     {
       useUnifiedTopology: true,
       useNewUrlParser: true,
+      useFindAndModify: false,
     },
     (err) => {
       callback(err, PORT)
