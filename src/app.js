@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const cors = require('cors')
 const helmet = require('helmet')
@@ -9,6 +10,7 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 app.use(helmet())
+app.use(express.static(path.resolve(__dirname, 'views')))
 app.use('/', getRoutes())
 
 connectDB((err, PORT = 3000) => {
