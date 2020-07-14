@@ -9,25 +9,25 @@ function makeCard({
 }) {
   const border = open ? 'border-red-700' : 'border-green-400'
   return `<div id=${_id} class="max-w-lg mx-auto w-full transition duration-500 ease-in-out in-animation mb-6 rounded border-l-8 ${border} bg-gray-200 overflow-hidden shadow-lg">
-                                <div class="px-6 py-4">
-                                    <p class="text-md text-red-500">${_id}</p>
-                                    <div class="flex justify-between">
-                                        <div class="font-bold text-xl mb-2">${issue_title}</div>
-                                        <p class="text-gray-600 text-lg">${assigned_to}</p>
-                                    </div>
-                                    <p class="text-gray-700 text-base">${issue_text}</p>
-                                        <p class=" antialiased text-sm">${created_by}</p>
-                                </div>
-                                ${
-                                  status_text
-                                    ? `
-                                        <div class="px-6 pt-1 pb-4">
-                                            <span class="inline-block bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2">${status_text}</span>
-                                        </div>
-                                    `
-                                    : ``
-                                }
-                            </div>`
+            <div class="px-6 py-4">
+                <p class="text-md text-red-500">${_id}</p>
+                <div class="flex justify-between">
+                    <div class="font-bold text-xl mb-2">${issue_title}</div>
+                    <p class="text-gray-600 text-lg">${assigned_to}</p>
+                </div>
+                <p class="text-gray-700 text-base">${issue_text}</p>
+                    <p class=" antialiased text-sm">${created_by}</p>
+            </div>
+            ${
+              status_text
+                ? `
+                    <div class="px-6 pt-1 pb-4">
+                        <span class="inline-block bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2">${status_text}</span>
+                    </div>
+                `
+                : ``
+            }
+        </div>`
 }
 
 function removeElement(id) {
