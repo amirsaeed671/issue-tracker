@@ -1,8 +1,8 @@
 {
-  "name": "issue-tracker-backend",
+  "name": "issue-tracker",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:amirsaeed671/issue-tracker-backend.git",
+  "repository": "git@github.com:amirsaeed671/issue-tracker.git",
   "author": "Amir Ali <amir.saeed.ali92@gmail.com>",
   "engines": {
     "node": ">=13",
