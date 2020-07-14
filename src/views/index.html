@@ -7,23 +7,27 @@
     <link
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
       rel="stylesheet"
-		/>
-		<style>
-			@keyframes enter {
-				from {transform: scale(0.8)}
-				to {transform: scale(1);}
-			}
-			.in-animation {
-				animation: enter 0.5s ease-in-out;
-			}
-		</style>
+    />
+    <style>
+      @keyframes enter {
+        from {
+          transform: scale(0.8);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      .in-animation {
+        animation: enter 0.5s ease-in-out;
+      }
+    </style>
   </head>
   <body class="bg-gray-800">
-    <div class="container mx-auto px-2">
-      <div class="w-full flex flex-wrap mx-auto mt-10 mb-20">
+    <div class="container px-2 mx-auto px-4">
+      <div class="w-full mx-auto flex flex-wrap mt-10 mb-20">
         <form
           id="add-issue-form"
-          class="bg-gray-100 shadow-md xs:w-full xs:pl-4 rounded px-8 pt-6 pb-8 mb-4"
+          class="bg-gray-100 shadow-md xs:max-w-full lg:max-w-sm rounded px-8 pt-6 pb-8 mb-4"
         >
           <div class="mb-4">
             <label
@@ -109,12 +113,110 @@
             </button>
           </div>
         </form>
-				<div class="bg-gray-100 h-48 shadow-md rounded px-8 pt-6 pb-8 mb-4 md:ml-6 md:w-1/3 w-full ml-0">
-          <div class="mb-6">
+        <form
+          id="update-issue-form"
+          class="bg-gray-100 shadow-md xs:max-w-full lg:max-w-sm lg:ml-4 rounded px-8 pt-6 pb-8 mb-4"
+        >
+          <div class="mb-4">
             <label
               class="block text-gray-700 text-sm font-bold mb-2"
-              for="id"
+              for="update_task_id"
             >
+              Task Id
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="update_task_id"
+              name="id"
+              required
+              type="text"
+              placeholder="Id of the task"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="update_issue_title"
+            >
+              Title
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="update_issue_title"
+              name="issue_title"
+              type="text"
+              placeholder="Issue title"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="update_issue_text"
+            >
+              Description
+            </label>
+            <textarea
+              class="shadow appearance-none resize-none h-48 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="update_issue_text"
+              name="issue_text"
+              placeholder="Issue description"
+            ></textarea>
+          </div>
+          <div class="flex flex-wrap mb-4 -mx-3">
+            <div class="w-full md:w-1/2 px-3">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="update_status_text"
+              >
+                Status Text
+              </label>
+              <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                id="update_status_text"
+                name="status_text"
+                type="text"
+                placeholder="Status Text (opt)"
+              />
+            </div>
+            <div class="w-full md:w-1/2 px-3">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="update_assigned_to"
+              >
+                Assigned to
+              </label>
+              <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                id="update_assigned_to"
+                name="assigned_to"
+                type="text"
+                placeholder="Assigned to (opt)"
+              />
+            </div>
+          </div>
+          <div class="mb-6 flex items-baseline">
+            <input type="checkbox" checked class="mr-2" name="open" id="open" />
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="open"
+            >
+              Open
+            </label>
+          </div>
+          <div class="flex items-center justify-between">
+            <button
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="submit"
+            >
+              Update Issue
+            </button>
+          </div>
+        </form>
+        <div
+          class="bg-gray-100 h-48 max-w-md shadow-md rounded px-8 pt-6 pb-8 mb-4 xl:ml-4 w-full ml-0"
+        >
+          <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="id">
               Delete a task by ID
             </label>
             <input
@@ -127,21 +229,32 @@
           </div>
           <div class="flex items-center justify-between">
             <button
-							class="bg-orange-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-							id="delete"
+              class="bg-orange-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              id="delete"
               type="button"
-						>
-							Delete
-						</button>
-					</div>
-				</div>
-			</div>
-      <div id="issues" class="grid md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-4"></div>
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        id="issues"
+        class="grid md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-4"
+      ></div>
     </div>
     <script>
-			function makeCard({_id = '', issue_title = '', issue_text = '', open = true, created_by = '', assigned_to = '', status_text = ''}) {
-				const border = open? 'border-red-700': 'border-green-400'
-				return `<div id=${_id} class="max-w-lg mx-auto w-full transition duration-500 ease-in-out in-animation mb-6 rounded border-l-8 ${border} bg-gray-200 overflow-hidden shadow-lg">
+      function makeCard({
+        _id = '',
+        issue_title = '',
+        issue_text = '',
+        open = true,
+        created_by = '',
+        assigned_to = '',
+        status_text = '',
+      }) {
+        const border = open ? 'border-red-700' : 'border-green-400'
+        return `<div id=${_id} class="max-w-lg mx-auto w-full transition duration-500 ease-in-out in-animation mb-6 rounded border-l-8 ${border} bg-gray-200 overflow-hidden shadow-lg">
 									<div class="px-6 py-4">
 										<p class="text-md text-red-500">${_id}</p>
 										<div class="flex justify-between">
@@ -151,80 +264,156 @@
 										<p class="text-gray-700 text-base">${issue_text}</p>
 											<p class=" antialiased text-sm">${created_by}</p>
 									</div>
-									${status_text? `
+									${
+                    status_text
+                      ? `
 											<div class="px-6 pt-1 pb-4">
 												<span class="inline-block bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2">${status_text}</span>
 											</div>
-										`: ``}
+										`
+                      : ``
+                  }
 								</div>`
-			}
+      }
 
-			async function getCards() {
-   			const issuesContainer = document.getElementById('issues')
+      function removeElement(id) {
+        var elem = document.getElementById(id)
+        elem.parentNode.removeChild(elem)
+      }
+
+      async function getCards() {
+        const issuesContainer = document.getElementById('issues')
         const res = await fetch('/api/issues', {
           headers: {
             Accept: 'application/json',
           },
         })
-				const resJson = await res.json()
+        const resJson = await res.json()
 
-				issuesContainer.innerHTML = ''
+        issuesContainer.innerHTML = ''
 
-				resJson.data.forEach((itemObj) => {
-					issuesContainer.innerHTML += makeCard(itemObj)
-				})
-			}
+        resJson.data.forEach((itemObj) => {
+          issuesContainer.innerHTML += makeCard(itemObj)
+        })
+      }
 
-			async function deleteCard(id) {
-				const res = await fetch('/api/issues', {
-					method: 'DELETE',
-					headers: {
-						'Content-Type': 'application/json',
-						'Accept': 'application/json'
-					},
-					body: JSON.stringify({id})
-				})
+      async function deleteCard(id) {
+        const res = await fetch('/api/issues', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({id}),
+        })
 
-				var elem = document.getElementById(id);
-				elem.parentNode.removeChild(elem);
-			}
+        removeElement(id)
+      }
 
-			async function addCard(event) {
-					const issuesContainer = document.getElementById('issues')
-					const issuesHtml = issuesContainer.innerHTML
-          event.preventDefault()
-          const formInputs = event.target.elements
+      async function addCard(event) {
+        const issuesContainer = document.getElementById('issues')
+        const issuesHtml = issuesContainer.innerHTML
+        event.preventDefault()
+        const formInputs = event.target.elements
 
-          const data = {
-            issue_title: formInputs['issue_title'].value,
-            issue_text: formInputs['issue_text'].value,
-            created_by: formInputs['created_by'].value,
-            assigned_to: formInputs['assigned_to'].value,
-            status_text: formInputs['status_text'].value,
-          }
+        const data = {
+          issue_title: formInputs['issue_title'].value,
+          issue_text: formInputs['issue_text'].value,
+          created_by: formInputs['created_by'].value,
+          assigned_to: formInputs['assigned_to'].value,
+          status_text: formInputs['status_text'].value,
+        }
 
-          const res = await fetch('/api/issues', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-          })
-					const jsonResponse = await res.json()
+        const res = await fetch('/api/issues', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+        const jsonResponse = await res.json()
 
-					issuesContainer.innerHTML = makeCard(jsonResponse.data) + issuesHtml
-			}
+        issuesContainer.innerHTML = makeCard(jsonResponse.data) + issuesHtml
+      }
 
-			window.addEventListener('load', getCards)
-			
-			document.getElementById('delete').addEventListener('click', () => {
-				const id = document.getElementById('id').value
-				deleteCard(id)
-			})
+      function removeAndUpdate(
+        element,
+        {
+          _id = '',
+          issue_title = '',
+          issue_text = '',
+          open = true,
+          created_by = '',
+          assigned_to = '',
+          status_text = '',
+        },
+      ) {
+        const border = open ? 'border-red-700' : 'border-green-400'
+        element.className = `max-w-lg mx-auto w-full transition duration-500 ease-in-out in-animation mb-6 rounded border-l-8 ${border} bg-gray-200 overflow-hidden shadow-lg`
+        return `<div class="px-6 py-4">
+                  <p class="text-md text-red-500">${_id}</p>
+                  <div class="flex justify-between">
+                    <div class="font-bold text-xl mb-2">${issue_title}</div>
+                    <p class="text-gray-600 text-lg">${assigned_to}</p>
+                  </div>
+                  <p class="text-gray-700 text-base">${issue_text}</p>
+                  <p class=" antialiased text-sm">${created_by}</p>
+                </div>
+                ${ status_text
+                    ? `
+                    <div class="px-6 pt-1 pb-4">
+                      <span class="inline-block bg-blue-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2">${status_text}</span>
+                    </div>
+                  `
+                    : ``
+                }`
+      }
+
+      async function updateCard(event) {
+        event.preventDefault()
+        const formInputs = event.target.elements;
+        const id = formInputs['id'].value;
+        const issue_title = formInputs['issue_title'].value;
+        const issue_text = formInputs['issue_text'].value;
+        const assigned_to = formInputs['assigned_to'].value;
+        const status_text = formInputs['status_text'].value;
+        const open = formInputs['open'].checked;
+
+        const data = {id, open}
+
+        if(issue_text) data.issue_text = issue_text;
+        if(issue_title) data.issue_title = issue_title;
+        if(assigned_to) data.assigned_to = assigned_to;
+        if(status_text) data.status_text = status_text;
+
+        const elementDiv = document.getElementById(id)
+
+        const res = await fetch('/api/issues', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+        const jsonResponse = await res.json()
+
+        elementDiv.innerHTML = removeAndUpdate(elementDiv, jsonResponse.data)
+      }
+
+      window.addEventListener('load', getCards)
+
+      document.getElementById('delete').addEventListener('click', () => {
+        const id = document.getElementById('id').value
+        deleteCard(id)
+      })
 
       document
         .getElementById('add-issue-form')
         .addEventListener('submit', addCard)
+
+      document
+        .getElementById('update-issue-form')
+        .addEventListener('submit', updateCard)
     </script>
   </body>
 </html>
