@@ -1,22 +1,6 @@
-const path = require('path')
-const express = require('express')
-const cors = require('cors')
-const helmet = require('helmet')
-const bodyParser = require('body-parser')
-const connectDB = require('./db')
-const getRoutes = require('./routes')
+const startServer = require('./start')
 
-const app = express()
-app.use(cors())
-app.use(bodyParser.json())
-app.use(helmet())
-app.use(express.static(path.resolve(__dirname, 'views')))
-app.use('/', getRoutes())
-
-connectDB((err, PORT = 3000) => {
-  if (!err) {
-    app.listen(PORT, () => {
-      console.log('🚀 App is listening on PORT', PORT)
-    })
-  }
+//starting the server
+startServer().then((server) => {
+  console.log(`🚀 App is listening on PORT ${server.address().port}`)
 })
