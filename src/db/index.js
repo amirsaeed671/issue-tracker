@@ -1,17 +1,15 @@
 const mongoose = require('mongoose')
 
-const {PORT, DB_URI} = process.env
-
-function connectDB(callback) {
+function connectDB(uri, callback) {
   mongoose.connect(
-    DB_URI,
+    uri,
     {
       useUnifiedTopology: true,
       useNewUrlParser: true,
       useFindAndModify: false,
     },
-    (err) => {
-      callback(err, PORT)
+    (err, db) => {
+      callback(err, db)
     },
   )
 }
