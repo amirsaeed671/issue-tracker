@@ -27,7 +27,7 @@
     "mongoose": "^5.9.23"
   },
   "devDependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "eslint": "^7.4.0",
     "eslint-config-kentcdodds": "^14.14.1",
     "husky": "^4.2.5",
